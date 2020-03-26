@@ -1,0 +1,20 @@
+name: CI
+on: pull_request
+jobs:
+  analyze-and-test:
+    name: Analyze & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: "1.15.17"
+          channel: beta
+      - name: User Repository
+        env:
+          FLUTTER_DART_HOME: ${{ env.FLUTTER_HOME }}/bin/cache/dart-sdk/bin
+        run: |
+          export PATH=$PATH:$FLUTTER_DART_HOME
+          ./tool/ci.sh repositories/user_repository
+      - name: maincopier App
+        run: ./tool/ci.sh .

@@ -1,0 +1,39 @@
+{
+  "@@last_modified": "2020-01-10T14:59:59.679469",
+  "authenticationFailure": "Authentication failure",
+  "@authenticationFailure": {
+    "description": "Message shown when there is an error at login",
+    "type": "text",
+    "placeholders": {}
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Label for logging in users",
+    "type": "text",
+    "placeholders": {}
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Label for logging out users",
+    "type": "text",
+    "placeholders": {}
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Password label on login form",
+    "type": "text",
+    "placeholders": {}
+  },
+  "username": "Username",
+  "@username": {
+    "description": "Username label on login form",
+    "type": "text",
+    "placeholders": {}
+  },
+  "welcomeToApp": "Welcome to maincopier",
+  "@welcomeToApp": {
+    "description": "Label to welcome users to the app",
+    "type": "text",
+    "placeholders": {}
+  }
+}

@@ -1,0 +1,16 @@
+name: user_repository
+description: Repository project in charge of managing the user domain
+version: 1.0.0
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  meta: ^1.1.8
+
+dev_dependencies:
+  test: ^1.3.0
+  nitpicky:
+    git:
+      url: https://github.com/VGVentures/nitpicky
+      ref: 1.0.2
