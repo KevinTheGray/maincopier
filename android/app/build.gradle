@@ -1,3 +1,6 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -75,11 +78,45 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+
     }
 }
 
 flutter {
     source '../..'
+}
+
+def getCurrentFlavor() {
+    Gradle gradle = getGradle()
+    String  tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+
+    Pattern pattern
+
+    if( tskReqStr.contains( "assemble" ) )
+        pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+    else
+        pattern = Pattern.compile("generate(\\w+)(Release|Debug)")
+
+    Matcher matcher = pattern.matcher( tskReqStr )
+
+    if( matcher.find() )
+        return matcher.group(1).toLowerCase()
+    else {
+        println "No flavor found for this task."
+        return ""
+    }
+}
+
+task copyAndReplaceMainFile() {
+    String currFlavor = getCurrentFlavor()
+    copy {
+        from "${projectDir}/../../lib/main/main_${currFlavor}.dart"
+        rename"main_${currFlavor}.dart", "main.dart"
+        into "${projectDir}/../../lib"
+    }
+    File main = new File("${projectDir}/../../lib/main.dart")
+    String text = main.getText('UTF-8')
+    main.write("// GENERATED FILE.  DO NOT MODIFY.\n\n${text}\n\n// GENERATED FILE.  DO NOT MODIFY.")
 }
 
 dependencies {
