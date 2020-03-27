@@ -3,6 +3,6 @@
 import 'dart:async';
 import 'package:maincopier/app.dart';
 
-Future<void> main() => runMainCopierApp('development');
+Future<void> main() => runMainCopierApp('qa2');
 
 // GENERATED FILE. DO NOT MODIFY.

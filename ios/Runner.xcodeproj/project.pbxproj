@@ -222,7 +222,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"// GENERATED FILE. DO NOT MODIFY.\\n\" > \"${PROJECT_DIR}/../lib/main.dart\"\ncat \"${PROJECT_DIR}/../lib/main/main_${FLAVOR}.dart\" >> \"${PROJECT_DIR}/../lib/main.dart\"\necho \"\\n\\n// GENERATED FILE. DO NOT MODIFY.\" >> \"${PROJECT_DIR}/../lib/main.dart\"\n";
+			shellScript = "bookend=\"// GENERATED FILE. DO NOT MODIFY.\"\nflavorMain=\"${PROJECT_DIR}/../lib/main/main_${FLAVOR}.dart\"\nmainFile=\"${PROJECT_DIR}/../lib/main.dart\"\necho \"$bookend\\n\" > \"$mainFile\"\ncat \"$flavorMain\" >> \"$mainFile\"\necho \"\\n\\n$bookend\" >> \"$mainFile\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
